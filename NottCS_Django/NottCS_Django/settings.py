@@ -48,9 +48,12 @@ INSTALLED_APPS = [
 ]
 
 REST_FRAMEWORK = {
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'PAGE_SIZE': 25,
     'DEFAULT_PERMISSION_CLASSES':[
         # 'azureAD_auth.perms.IsAzureADAuthenticated', #Currently replaced by IsAuthenticated
-        'rest_framework.permissions.IsAuthenticated',
+        # 'rest_framework.permissions.IsAuthenticated',
+        'rest_framework.permissions.AllowAny',
     ],
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'azureAD_auth.auth.AzureADSocialAuthentication',  
@@ -145,3 +148,4 @@ STATICFILES_DIRS = [
 # Media files
 MEDIA_ROOT = BASE_DIR.replace('\\', '/')
 MEDIA_URL = '/media/'
+
